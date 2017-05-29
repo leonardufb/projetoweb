@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width" />
+
+<head>
+<title>Insert title here</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<!-- Latest compiled and minified CSS -->
+
+<script src="/webjars/jquery/3.1.1/jquery.min.js"></script>
+<script src="/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
+
+<!-- Optional theme -->
+<link rel="stylesheet"
+	href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" />
+</head>
+<body>
+	   
+	<div class="panel panel-default">
+		        
+		<div class="panel-heading">
+			 <strong>Cadastro de Contatos</strong>         
+		</div>
+		        
+		<div class="panel-body">
+
+			<form action="#" th:action="@{/contato/incluir}"
+				th:object="${contato}" method="post" role="form">
+				           
+				<fieldset>
+					                     
+					<div class="form-group row">
+						<div class="col-md-4">
+							<label for="nome">Nome:</label> <input type="text"
+								class="form-control input-sm" name="nome" id="nome"
+								th:field="*{nome}" />
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<div class="col-md-4">
+							<label for="nome">Sobrenome:</label> <input type="text"
+								class="form-control input-sm" name="sobreNome" id="sobrenome"
+								th:field="*{sobreNome}" />
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<div class="col-md-4">
+							<label for="nome">Telefone:</label> <input type="text"
+								class="form-control input-sm" name="telefone" id="telefone"
+								th:field="*{telefone}" />
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<div class="col-md-4">
+							<label for="nome">E-mail:</label> <input type="text"
+								class="form-control input-sm" name="email" id="email"
+								th:field="*{email}" />
+						</div>
+					</div>
+
+					<button type="submit" class="btn icon-btn btn-success">
+						<span
+							class="glyphicon btn-glyphicon glyphicon-plus img-circle text-success"></span>
+						Incluir
+					</button>
+				</fieldset>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

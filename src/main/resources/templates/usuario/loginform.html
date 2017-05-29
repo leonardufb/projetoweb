@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width" />
+
+<head>
+<title>Insert title here</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<!-- Latest compiled and minified CSS -->
+
+<script src="/webjars/jquery/3.1.1/jquery.min.js"></script>
+<script src="/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
+
+<!-- Optional theme -->
+<link rel="stylesheet"
+	href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" />
+</head>
+<body>
+	   
+	<div class="panel panel-default">
+		        
+		<div class="panel-heading">
+			 <strong>Login de Usuarios</strong>         
+		</div>
+		        
+		<div class="panel-body">
+		
+			<!--  <div th:if="${param.error}">
+            Invalid username and password.
+	        </div>
+	        <div th:if="${param.logout}">
+	            You have been logged out.
+	        </div>-->
+
+			<form action="#" th:action="@{/usuario/login}" th:object="${usuario}" method="post" role="form">
+				           
+				<fieldset>                     
+					
+
+					<div class="form-group row">
+						<div class="col-md-4">
+							<label for="email">E-mail:</label> <input type="text"
+								class="form-control input-sm" name="email" id="email"
+								th:field="*{email}" />
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<div class="col-md-4">
+							<label for="senha">Senha:</label> <input type="text"
+								class="form-control input-sm" name="senha" id="senha"
+								th:field="*{senha}" />
+						</div>
+					</div>
+
+					<button type="submit" class="btn icon-btn btn-success">
+						<span
+							class="glyphicon btn-glyphicon glyphicon-plus img-circle text-success"></span>
+						Entrar
+					</button>
+				</fieldset>
+			</form>
+		</div>
+	</div>
+</body>
+</html>
