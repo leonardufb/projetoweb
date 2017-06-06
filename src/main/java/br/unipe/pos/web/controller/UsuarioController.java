@@ -38,8 +38,7 @@ import br.unipe.pos.web.model.UsuarioModel;
 @Controller
 @RequestMapping("/usuario")
 public class UsuarioController {	
-	
-	
+		
 	// id nome email senha
 	@Autowired
 	private UsuarioDAO repositorio;
@@ -53,14 +52,9 @@ public class UsuarioController {
 	@RequestMapping(path="/form", method=RequestMethod.GET)	
 	public String form(Model model) {
 		model.addAttribute("usuario", new UsuarioModel());
-		return "/usuario/usuarioform";
-	}
+		return "/usuario/form";
+	}	
 	
-	@RequestMapping(path="/loginform", method=RequestMethod.GET)	
-	public String login(Model model) {
-		model.addAttribute("usuario", new UsuarioModel());
-		return "/usuario/loginform";
-	}
 	
 	@RequestMapping(path="/login")
 	@ResponseBody
@@ -100,11 +94,11 @@ public class UsuarioController {
 		return "Sucesso";
 	}
 	
-	@RequestMapping(path={"/listar","/"} , method=RequestMethod.GET)
-	public List<UsuarioModel> listar(){
-		List<UsuarioModel> lista = 
-				repositorio.findAll();
-		return lista;
+	@RequestMapping(path={"/listar","/"})
+	public String listar(Model model){
+		List<UsuarioModel> usuarios = repositorio.findAll();
+		model.addAttribute("usuarios", usuarios);
+		return "/usuario/listar";
 	}	
 		
 

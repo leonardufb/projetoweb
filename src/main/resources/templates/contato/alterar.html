@@ -22,12 +22,17 @@
 	<div class="panel panel-default">
 		        
 		<div class="panel-heading">
-			 <strong>Cadastro de Usuarios</strong>         
+			 <strong>Alteracao de Contatos</strong>         
 		</div>
 		        
 		<div class="panel-body">
+		
+			<div th:if="${param.success}">				        
+				<h1 style="color: blue">Contato alterado com sucesso</h1>				    
+			</div>
 
-			<form action="#" th:action="@{/usuario/incluir}" th:object="${usuario}" method="post" role="form">
+			<form action="#" th:action="@{/contato/incluir}"
+				th:object="${contato}" method="post" role="form">
 				           
 				<fieldset>
 					                     
@@ -41,17 +46,25 @@
 
 					<div class="form-group row">
 						<div class="col-md-4">
-							<label for="email">E-mail:</label> <input type="text"
-								class="form-control input-sm" name="email" id="email"
-								th:field="*{email}" />
+							<label for="nome">Sobrenome:</label> <input type="text"
+								class="form-control input-sm" name="sobreNome" id="sobrenome"
+								th:field="*{sobreNome}" />
 						</div>
 					</div>
 
 					<div class="form-group row">
 						<div class="col-md-4">
-							<label for="senha">Senha:</label> <input type="text"
-								class="form-control input-sm" name="senha" id="senha"
-								th:field="*{senha}" />
+							<label for="nome">Telefone:</label> <input type="text"
+								class="form-control input-sm" name="telefone" id="telefone"
+								th:field="*{telefone}" />
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<div class="col-md-4">
+							<label for="nome">E-mail:</label> <input type="text"
+								class="form-control input-sm" name="email" id="email"
+								th:field="*{email}" />
 						</div>
 					</div>
 
@@ -60,8 +73,17 @@
 							class="glyphicon btn-glyphicon glyphicon-plus img-circle text-success"></span>
 						Incluir
 					</button>
+					<div class="btn-group" role="group" aria-label="">			
+			<a type="button" class="btn btn-default" href="/contato/listar">Listar	Contato</a>
+		</div>
 				</fieldset>
-			</form>
+			</form>		
+		
+		<hr />
+
+		<form th:action="@{/logout}" method="post">			        
+			<button type="submit" class="btn btn-danger">Logout</button>			    
+		</form>
 		</div>
 	</div>
 </body>

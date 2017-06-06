@@ -60,8 +60,15 @@
 							class="glyphicon btn-glyphicon glyphicon-plus img-circle text-success"></span>
 						Incluir
 					</button>
+					<a type="button" class="btn btn-default" href="/usuario/listar">Listar	Usuario</a>
 				</fieldset>
 			</form>
+					
+		<hr />
+
+		<form th:action="@{/logout}" method="post">			        
+			<button type="submit" class="btn btn-danger">Logout</button>			    
+		</form>
 		</div>
 	</div>
 </body>

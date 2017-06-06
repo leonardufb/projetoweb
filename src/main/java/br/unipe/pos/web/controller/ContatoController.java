@@ -76,11 +76,11 @@ public class ContatoController {
 		return "Sucesso";
 	}
 	
-	@RequestMapping("/incluir")
+	@RequestMapping("/incluir")	
 	@ResponseBody
 	public String incluir(ContatoModel contato){
-		repositorio.save(contato);
-		return "Sucesso";
+		repositorio.save(contato);			
+		return "Contato Adicionado com sucesso.";
 	}
 	
 	@RequestMapping(path={"/listar","/"})
@@ -88,8 +88,7 @@ public class ContatoController {
 		List<ContatoModel> contatos = repositorio.findAll();
 		model.addAttribute("contatos", contatos);
 		return "/contato/listar";
-	}	
-		
+	}			
 
 	public ContatoDAO getRepositorio() {
 		return repositorio;
@@ -98,7 +97,4 @@ public class ContatoController {
 	public void setRepositorio(ContatoDAO repositorio) {
 		this.repositorio = repositorio;
 	}
-
-
-
 }

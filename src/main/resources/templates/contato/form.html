@@ -26,6 +26,10 @@
 		</div>
 		        
 		<div class="panel-body">
+		
+			<div th:if="${param.success}">				        
+				<h1 style="color: blue">Contato adicionado com sucesso</h1>				    
+			</div>
 
 			<form action="#" th:action="@{/contato/incluir}"
 				th:object="${contato}" method="post" role="form">
@@ -69,8 +73,17 @@
 							class="glyphicon btn-glyphicon glyphicon-plus img-circle text-success"></span>
 						Incluir
 					</button>
+					<div class="btn-group" role="group" aria-label="">			
+			<a type="button" class="btn btn-default" href="/contato/listar">Listar	Contato</a>
+		</div>
 				</fieldset>
-			</form>
+			</form>		
+		
+		<hr />
+
+		<form th:action="@{/logout}" method="post">			        
+			<button type="submit" class="btn btn-danger">Logout</button>			    
+		</form>
 		</div>
 	</div>
 </body>

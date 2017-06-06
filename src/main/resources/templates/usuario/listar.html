@@ -12,33 +12,27 @@
 
 	<div class="container">
 
-		<div id="contatos">
+		<div id="usuarios">
 			<table class="table table-hover">
 				<thead>
 					<tr>
 						<th>Nome</th>
-						<th>Email</th>
-						<th>Telefone</th>
-						<th>Sobrenome</th>
-						<th></th>
-						<th></th>
+						<th>Email</th>						
 					</tr>
 				</thead>
-				<tr th:each="contato : ${contatos}">
-					<td><span th:text="${contato.nome}"></span></td>
-					<td><span th:text="${contato.email}"></span></td>
-					<td><span th:text="${contato.telefone}"></span></td>
-					<td><span th:text="${contato.sobreNome}"></span></td>
-					<td><a href="/contato/remover/${contato.id}" class="btn btn-danger">Excluir</a></td>
-					<td><a href="/contato/alterar/${contato.id}" class="btn btn-primary">Alterar</a></td>
+				<tr th:each="usuario : ${usuarios}">
+					<td><span th:text="${usuario.nome}"></span></td>
+					<td><span th:text="${usuario.email}"></span></td>	
+					<td><a href="/usuario/remover/${usuario.id}" class="btn btn-danger">Excluir</a></td>
+					<td><a href="/usuario/alterar/${usuario.id}" class="btn btn-primary">Alterar</a></td>				
 				</tr>
 
 			</table>
 		</div>
 
 		<div class="btn-group" role="group" aria-label="">
-			<a type="button" class="btn btn-primary" href="/contato/form">Adicionar</a>
-			<a type="button" class="btn btn-default" href="/usuario/listar">Listar	Usuario</a>
+			<a type="button" class="btn btn-primary" href="/usuario/form">Adicionar</a>
+			<a type="button" class="btn btn-default" href="/contato/listar">Listar Contatos</a>
 		</div>
 		
 		<hr />
