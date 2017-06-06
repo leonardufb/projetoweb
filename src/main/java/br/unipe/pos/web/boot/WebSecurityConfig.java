@@ -13,6 +13,8 @@
  */
 package br.unipe.pos.web.boot;
 
+import javax.sql.DataSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -28,37 +30,34 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @Configuration
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
-	 /*@Override protected void configure(HttpSecurity httpSecurity) throws
-	 Exception { // Autoriza todas as requisiÃ§Ãµes
-	  httpSecurity.authorizeRequests().antMatchers("/").permitAll(); 
-	  }*/
-	 
-
-	@Override
-	protected void configure(HttpSecurity httpSecurity) throws Exception {
-		// Autoriza todas as requisições
-		// httpSecurity.authorizeRequests().antMatchers("/").permitAll();
-		httpSecurity
-			.authorizeRequests()
-				.antMatchers("/", "/usuario/login*").anonymous()
-				.anyRequest().authenticated()
-				.and()
-			.formLogin()
-				.loginPage("/usuario/loginform")
-				.usernameParameter("email")
-				.passwordParameter("senha")
-				.defaultSuccessUrl("/contato/form")
-			.and()
-				.logout()
-				.logoutSuccessUrl("/usuario/login")
-			.and()
-				.csrf()
-				.disable();
-	}
+	@Autowired
+	DataSource dataSource;
 
 	@Autowired
-	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+	public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
+		auth.jdbcAuthentication().dataSource(dataSource)
+				.usersByUsernameQuery("select email, senha, enabled from tb_usuario where email=?")
+				.authoritiesByUsernameQuery("select email, perfil from tb_perfil where email=?");
+	}
 
-		auth.inMemoryAuthentication().withUser("root").password("123mudar").roles("USES");
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+		http
+			.authorizeRequests()
+			.antMatchers("/", "/home", "/login/**").permitAll()
+			.antMatchers("/admin").hasRole("ADMIN")
+			.anyRequest().authenticated()
+		.and()
+			.formLogin()
+			.loginPage("/login/form")
+			//.usernameParameter("email")
+			//.passwordParameter("senha")
+			.defaultSuccessUrl("/contato/form")
+			.permitAll()
+		.and()
+			.logout()
+			.permitAll();
+		
+		http.exceptionHandling().accessDeniedPage("/403");
 	}
 }

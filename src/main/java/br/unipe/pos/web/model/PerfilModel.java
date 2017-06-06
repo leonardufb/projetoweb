@@ -30,79 +30,45 @@ import javax.persistence.Table;
  * 
  */
 @Entity
-@Table(name = "tb_usuario")
-public class UsuarioModel implements Serializable {
+@Table(name = "tb_perfil")
+public class PerfilModel implements Serializable {
 
 	@Id
 	@GeneratedValue
 	private int id;
 	
-	@Column(name = "nome", nullable = false)
-	private String nome;
-	
-	@Column(name = "email", nullable = false)
-	private String email;
-	
-	@Column(name = "senha")
-	private String senha;
-	
-	@Column(name = "perfil")
+	@Column(name = "perfil", nullable = false)
 	private String perfil;
 	
-	@Column(name = "enabled")
-	private int enabled;
+	@Column(name = "email", nullable = false)
+	private String email;	
 	
 	public int getId() {
 		return id;
 	}
-	
+
 	public void setId(int id) {
 		this.id = id;
 	}
-	
+
 	public String getNome() {
-		return nome;
+		return perfil;
 	}
-	
-	public void setNome(String nome) {
-		this.nome = nome;
+
+	public void setNome(String perfil) {
+		this.perfil = perfil;
 	}
-	
+
 	public String getEmail() {
 		return email;
 	}
-	
+
 	public void setEmail(String email) {
 		this.email = email;
-	}
-	
-	public String getSenha() {
-		return senha;
-	}
-	
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}	
-
-	public String getPerfil() {
-		return perfil;
-	}
-	
-	public void setPerfil(String perfil) {
-		this.perfil = perfil;
-	}
-	
-	
-	public int getEnabled() {
-		return enabled;
-	}
-
-	public void setEnabled(int enabled) {
-		this.enabled = enabled;
 	}
 
 	@Override
 	public String toString() {
-		return "UsuarioModel [id=" + id + ", nome=" + nome + ", email=" + email + ", perfil= " + perfil + "]";
+		return "UsuarioModel [id=" + id + ", perfil=" + perfil + ", email=" + email + "]";
 	}
 }

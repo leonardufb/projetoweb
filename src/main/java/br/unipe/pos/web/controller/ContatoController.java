@@ -53,7 +53,7 @@ public class ContatoController {
 	@RequestMapping(path="/form", method=RequestMethod.GET)	
 	public String form(Model model) {
 		model.addAttribute("contato", new ContatoModel());
-		return "/contato/contatoform";
+		return "/contato/form";
 	}
 
 	@RequestMapping(path="/consultar",method=RequestMethod.GET)
@@ -83,11 +83,11 @@ public class ContatoController {
 		return "Sucesso";
 	}
 	
-	@RequestMapping(path={"/listar","/"} , method=RequestMethod.GET)
-	public List<ContatoModel> listar(){
-		List<ContatoModel> lista = 
-				repositorio.findAll();
-		return lista;
+	@RequestMapping(path={"/listar","/"})
+	public String listar(Model model){
+		List<ContatoModel> contatos = repositorio.findAll();
+		model.addAttribute("contatos", contatos);
+		return "/contato/listar";
 	}	
 		
 
